@@ -2,14 +2,29 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Djangooo</title>
+    <title>Main: Board of Entries</title>
 </head>
 <body>
+<h1>Obyavleniya</h1>
 
+<div>
+    <a href="/bboard/">Main</a>
+    {% for rubric in rubrics %}
+        <a href="/bboard/{{ rubric.pk }}">{{ rubric.name }}</a>
+    {% endfor %}
+</div>
 {% for bb in bbs %}
     <div>
         <h2>{{ bb.title }}</h2>
+        <p>{{ bb.content }}</p>
+        <p>
+            <a href="/bboard/{{ bb.pk }}">
+                {{ bb.name }}
+            </a>
+        </p>
+{#        <p>{{ bb.published|date:"d.m.Y H:i:s" }}</p>#}
     </div>
 {% endfor %}
+
 </body>
 </html>
